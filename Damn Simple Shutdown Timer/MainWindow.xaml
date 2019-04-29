@@ -7,14 +7,17 @@
         mc:Ignorable="d"
         Title="Damn Simple Shutdown Timer" Height="450" Width="800">
     <Grid>
-        <ComboBox x:Name="HourComboBox" HorizontalAlignment="Left" Margin="200,59,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="HourComboBox_SelectionChanged"/>
-        <ComboBox x:Name="MinutesComboBox" HorizontalAlignment="Left" Margin="325,59,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="MinutesComboBox_SelectionChanged"/>
-        <ComboBox x:Name="SecondsComboBox" HorizontalAlignment="Left" Margin="450,59,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="SecondsComboBox_SelectionChanged"/>
-        <Button x:Name="StartTimerButton" Content="Start timer" HorizontalAlignment="Left" Margin="43,93,0,0" VerticalAlignment="Top" Width="85" Click="StartTimerButton_Click"/>
-        <Button x:Name="CancelTimerButton" Content="Cancel timer" HorizontalAlignment="Left" Margin="328,93,0,0" VerticalAlignment="Top" Width="85" Click="CancelTimerButton_Click"/>
-        <Label Content="Hours" HorizontalAlignment="Left" Margin="195,33,0,0" VerticalAlignment="Top"/>
-        <Label Content="Minutes" HorizontalAlignment="Left" Margin="320,33,0,0" VerticalAlignment="Top"/>
-        <Label Content="Seconds" HorizontalAlignment="Left" Margin="445,33,0,0" VerticalAlignment="Top"/>
-        <ComboBox x:Name="InAtComboBox" HorizontalAlignment="Left" Margin="43,62,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="InAtComboBox_SelectionChanged"/>
+        <ComboBox x:Name="HourComboBox" HorizontalAlignment="Left" Margin="28,116,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="HourComboBox_SelectionChanged"/>
+        <ComboBox x:Name="MinutesComboBox" HorizontalAlignment="Left" Margin="153,116,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="MinutesComboBox_SelectionChanged"/>
+        <ComboBox x:Name="SecondsComboBox" HorizontalAlignment="Left" Margin="278,116,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="SecondsComboBox_SelectionChanged"/>
+        <Button x:Name="StartTimerButton" Content="Start timer" HorizontalAlignment="Left" Margin="28,143,0,0" VerticalAlignment="Top" Width="85" Click="StartTimerButton_Click"/>
+        <Button x:Name="CancelTimerButton" Content="Cancel timer" HorizontalAlignment="Left" Margin="313,143,0,0" VerticalAlignment="Top" Width="85" Click="CancelTimerButton_Click"/>
+        <Label Content="Hours" HorizontalAlignment="Left" Margin="23,90,0,0" VerticalAlignment="Top"/>
+        <Label Content="Minutes" HorizontalAlignment="Left" Margin="148,90,0,0" VerticalAlignment="Top"/>
+        <Label Content="Seconds" HorizontalAlignment="Left" Margin="273,90,0,0" VerticalAlignment="Top"/>
+        <ComboBox x:Name="InAtComboBox" HorizontalAlignment="Left" Margin="153,54,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="InAtComboBox_SelectionChanged"/>
+        <ComboBox HorizontalAlignment="Left" Margin="28,54,0,0" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Action" HorizontalAlignment="Left" Margin="23,28,0,0" VerticalAlignment="Top"/>
+        <Label Content="Mode" HorizontalAlignment="Left" Margin="148,28,0,0" VerticalAlignment="Top"/>
     </Grid>
 </Window>

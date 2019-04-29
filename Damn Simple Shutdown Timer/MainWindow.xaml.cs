@@ -24,15 +24,16 @@ namespace Damn_Simple_Shutdown_Timer
         public int Hours { get; set; }
         public int Minutes { get; set; }
         public int Seconds { get; set; }
-        public string InAt { get; set; }
+        public Mode Mode { get; set; }
+        public Action Action { get; set; }
 
         public MainWindow()
         {
             InitializeComponent();
 
             // init InAt dropdown
-            this.InAtComboBox.ItemsSource = new List<string>() { "In", "At" };
-            this.InAtComboBox.SelectedValue = "In";
+            this.InAtComboBox.ItemsSource = Enum.GetValues(typeof(Damn_Simple_Shutdown_Timer.Mode));
+            this.InAtComboBox.SelectedValue = Mode.In;
 
             // init hours dropdown
             var hours = new List<int>(24);
@@ -72,22 +73,23 @@ namespace Damn_Simple_Shutdown_Timer
 
         private void InAtComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            this.InAt = InAtComboBox.SelectedValue.ToString();
+            this.Mode = (Mode)Enum.Parse(typeof(Mode), InAtComboBox.SelectedValue.ToString());
         }
 
         private void StartTimerButton_Click(object sender, RoutedEventArgs e)
         {
             var secondsToShutdown = 0;
-            if (InAt == "In")
+            if (Mode == Mode.In)
             {
                 var shutdown = DateTime.Now.AddHours(this.Hours).AddMinutes(this.Minutes).AddSeconds(this.Seconds);
                 secondsToShutdown = Convert.ToInt32((shutdown - DateTime.Now).TotalSeconds);
             }
             else     // InAt = "At"
             {
-                // TODO
+                // TODO consider if the timer is the day after
+                secondsToShutdown = 36000;  // just so I dont shutdown this rig again by mistake
             }
-            
+
             this.RunProcess("shutdown", "/s /t " + secondsToShutdown);
         }
 

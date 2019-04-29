@@ -24,10 +24,15 @@ namespace Damn_Simple_Shutdown_Timer
         public int Hours { get; set; }
         public int Minutes { get; set; }
         public int Seconds { get; set; }
+        public string InAt { get; set; }
 
         public MainWindow()
         {
             InitializeComponent();
+
+            // init InAt dropdown
+            this.InAtComboBox.ItemsSource = new List<string>() { "In", "At" };
+            this.InAtComboBox.SelectedValue = "In";
 
             // init hours dropdown
             var hours = new List<int>(24);
@@ -65,19 +70,35 @@ namespace Damn_Simple_Shutdown_Timer
             this.Seconds = int.Parse(SecondsComboBox.SelectedValue.ToString());
         }
 
+        private void InAtComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            this.InAt = InAtComboBox.SelectedValue.ToString();
+        }
+
         private void StartTimerButton_Click(object sender, RoutedEventArgs e)
         {
-            var shutdown = DateTime.Now.AddHours(this.Hours).AddMinutes(this.Minutes).AddSeconds(this.Seconds);
-            var secondsToShutdown = (shutdown - DateTime.Now).TotalSeconds;
-            var processInfo = new ProcessStartInfo("shutdown", "/s /t " + secondsToShutdown);
-            processInfo.CreateNoWindow = true;
-            processInfo.UseShellExecute = false;
-            Process.Start(processInfo);
+            var secondsToShutdown = 0;
+            if (InAt == "In")
+            {
+                var shutdown = DateTime.Now.AddHours(this.Hours).AddMinutes(this.Minutes).AddSeconds(this.Seconds);
+                secondsToShutdown = Convert.ToInt32((shutdown - DateTime.Now).TotalSeconds);
+            }
+            else     // InAt = "At"
+            {
+                // TODO
+            }
+            
+            this.RunProcess("shutdown", "/s /t " + secondsToShutdown);
         }
 
         private void CancelTimerButton_Click(object sender, RoutedEventArgs e)
         {
-            var processInfo = new ProcessStartInfo("shutdown", "/a");
+            this.RunProcess("shutdown", "/a");
+        }
+
+        private void RunProcess(string process, string args)
+        {
+            var processInfo = new ProcessStartInfo(process, args);
             processInfo.CreateNoWindow = true;
             processInfo.UseShellExecute = false;
             Process.Start(processInfo);

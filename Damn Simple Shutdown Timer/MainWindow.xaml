@@ -11,7 +11,7 @@
             <Label Content="Action" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top"/>
             <ComboBox x:Name="ActionComboBox" HorizontalAlignment="Left" Margin="0,30,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="ActionComboBox_SelectionChanged"/>
             <Label Content="Mode" HorizontalAlignment="Left" Margin="130,0,0,0" VerticalAlignment="Top"/>
-            <ComboBox x:Name="ModeComboBox" HorizontalAlignment="Left" Margin="130,30,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="InAtComboBox_SelectionChanged"/>
+            <ComboBox x:Name="ModeComboBox" HorizontalAlignment="Left" Margin="130,30,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="ModeComboBox_SelectionChanged"/>
         </Grid>
 
         <Grid x:Name="TimeGrid" HorizontalAlignment="Left" Height="Auto" Margin="20, 80, 20, 20" VerticalAlignment="Top" Width="Auto">
@@ -21,6 +21,10 @@
             <ComboBox x:Name="MinutesComboBox" HorizontalAlignment="Left" Margin="130,30,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="MinutesComboBox_SelectionChanged"/>
             <Label Content="Seconds" HorizontalAlignment="Left" Margin="260,0,0,0" VerticalAlignment="Top"/>
             <ComboBox x:Name="SecondsComboBox" HorizontalAlignment="Left" Margin="260,30,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="SecondsComboBox_SelectionChanged"/>
+        </Grid>
+
+        <Grid x:Name="DateGrid">
+            
         </Grid>
 
         <Grid x:Name="ActionsGrid" HorizontalAlignment="Left" Height="Auto" Margin="20, 160, 20, 20" VerticalAlignment="Top" Width="Auto">

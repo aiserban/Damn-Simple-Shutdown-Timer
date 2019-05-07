@@ -76,9 +76,21 @@ namespace Damn_Simple_Shutdown_Timer
             this.Seconds = int.Parse(SecondsComboBox.SelectedValue.ToString());
         }
 
-        private void InAtComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void ModeComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             this.Mode = (Mode)Enum.Parse(typeof(Mode), ModeComboBox.SelectedValue.ToString());
+
+            if (this.Mode == Mode.At)
+            {
+                this.TimeGrid.Visibility = Visibility.Collapsed;
+                this.DateGrid.Visibility = Visibility.Visible;
+            }
+
+            if (this.Mode == Mode.In)
+            {
+                this.DateGrid.Visibility = Visibility.Collapsed;
+                this.TimeGrid.Visibility = Visibility.Visible;
+            }
         }
 
         private void StartTimerButton_Click(object sender, RoutedEventArgs e)

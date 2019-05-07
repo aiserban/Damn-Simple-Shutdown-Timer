@@ -7,17 +7,25 @@
         mc:Ignorable="d"
         Title="Damn Simple Shutdown Timer" Height="450" Width="800">
     <Grid>
-        <ComboBox x:Name="HourComboBox" HorizontalAlignment="Left" Margin="28,116,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="HourComboBox_SelectionChanged"/>
-        <ComboBox x:Name="MinutesComboBox" HorizontalAlignment="Left" Margin="153,116,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="MinutesComboBox_SelectionChanged"/>
-        <ComboBox x:Name="SecondsComboBox" HorizontalAlignment="Left" Margin="278,116,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="SecondsComboBox_SelectionChanged"/>
-        <Button x:Name="StartTimerButton" Content="Start timer" HorizontalAlignment="Left" Margin="28,143,0,0" VerticalAlignment="Top" Width="85" Click="StartTimerButton_Click"/>
-        <Button x:Name="CancelTimerButton" Content="Cancel timer" HorizontalAlignment="Left" Margin="313,143,0,0" VerticalAlignment="Top" Width="85" Click="CancelTimerButton_Click"/>
-        <Label Content="Hours" HorizontalAlignment="Left" Margin="23,90,0,0" VerticalAlignment="Top"/>
-        <Label Content="Minutes" HorizontalAlignment="Left" Margin="148,90,0,0" VerticalAlignment="Top"/>
-        <Label Content="Seconds" HorizontalAlignment="Left" Margin="273,90,0,0" VerticalAlignment="Top"/>
-        <ComboBox x:Name="InAtComboBox" HorizontalAlignment="Left" Margin="153,54,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="InAtComboBox_SelectionChanged"/>
-        <ComboBox HorizontalAlignment="Left" Margin="28,54,0,0" VerticalAlignment="Top" Width="120"/>
-        <Label Content="Action" HorizontalAlignment="Left" Margin="23,28,0,0" VerticalAlignment="Top"/>
-        <Label Content="Mode" HorizontalAlignment="Left" Margin="148,28,0,0" VerticalAlignment="Top"/>
+        <Grid x:Name="ModeGrid" Margin="20" Height="Auto" Width="Auto" HorizontalAlignment="Left" VerticalAlignment="Top">
+            <Label Content="Action" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top"/>
+            <ComboBox x:Name="ActionComboBox" HorizontalAlignment="Left" Margin="0,30,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="ActionComboBox_SelectionChanged"/>
+            <Label Content="Mode" HorizontalAlignment="Left" Margin="130,0,0,0" VerticalAlignment="Top"/>
+            <ComboBox x:Name="ModeComboBox" HorizontalAlignment="Left" Margin="130,30,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="InAtComboBox_SelectionChanged"/>
+        </Grid>
+
+        <Grid x:Name="TimeGrid" HorizontalAlignment="Left" Height="Auto" Margin="20, 80, 20, 20" VerticalAlignment="Top" Width="Auto">
+            <Label Content="Hours" HorizontalAlignment="Left" Margin="0" VerticalAlignment="Top"/>
+            <ComboBox x:Name="HourComboBox" HorizontalAlignment="Left" Margin="0,30,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="HourComboBox_SelectionChanged"/>
+            <Label Content="Minutes" HorizontalAlignment="Left" Margin="130,0,0,0" VerticalAlignment="Top"/>
+            <ComboBox x:Name="MinutesComboBox" HorizontalAlignment="Left" Margin="130,30,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="MinutesComboBox_SelectionChanged"/>
+            <Label Content="Seconds" HorizontalAlignment="Left" Margin="260,0,0,0" VerticalAlignment="Top"/>
+            <ComboBox x:Name="SecondsComboBox" HorizontalAlignment="Left" Margin="260,30,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="SecondsComboBox_SelectionChanged"/>
+        </Grid>
+
+        <Grid x:Name="ActionsGrid" HorizontalAlignment="Left" Height="Auto" Margin="20, 160, 20, 20" VerticalAlignment="Top" Width="Auto">
+            <Button x:Name="StartTimerButton" Content="Start timer" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" Width="85" Click="StartTimerButton_Click"/>
+            <Button x:Name="CancelTimerButton" Content="Cancel timer" HorizontalAlignment="Right" Margin="260,0,0,0" VerticalAlignment="Top" Width="85" Click="CancelTimerButton_Click"/>
+        </Grid>
     </Grid>
 </Window>

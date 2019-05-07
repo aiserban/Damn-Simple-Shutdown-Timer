@@ -31,9 +31,13 @@ namespace Damn_Simple_Shutdown_Timer
         {
             InitializeComponent();
 
-            // init InAt dropdown
-            this.InAtComboBox.ItemsSource = Enum.GetValues(typeof(Damn_Simple_Shutdown_Timer.Mode));
-            this.InAtComboBox.SelectedValue = Mode.In;
+            // init Action dropdown
+            this.ActionComboBox.ItemsSource = Enum.GetValues(typeof(Damn_Simple_Shutdown_Timer.Action));
+            this.ActionComboBox.SelectedValue = Action.Shutdown;
+
+            // init Mode dropdown
+            this.ModeComboBox.ItemsSource = Enum.GetValues(typeof(Damn_Simple_Shutdown_Timer.Mode));
+            this.ModeComboBox.SelectedValue = Mode.In;
 
             // init hours dropdown
             var hours = new List<int>(24);
@@ -54,6 +58,7 @@ namespace Damn_Simple_Shutdown_Timer
             this.MinutesComboBox.SelectedValue = 0;
             this.SecondsComboBox.ItemsSource = minutesSeconds;
             this.SecondsComboBox.SelectedValue = 0;
+            
         }
 
         private void HourComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -73,7 +78,7 @@ namespace Damn_Simple_Shutdown_Timer
 
         private void InAtComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            this.Mode = (Mode)Enum.Parse(typeof(Mode), InAtComboBox.SelectedValue.ToString());
+            this.Mode = (Mode)Enum.Parse(typeof(Mode), ModeComboBox.SelectedValue.ToString());
         }
 
         private void StartTimerButton_Click(object sender, RoutedEventArgs e)
@@ -84,7 +89,7 @@ namespace Damn_Simple_Shutdown_Timer
                 var shutdown = DateTime.Now.AddHours(this.Hours).AddMinutes(this.Minutes).AddSeconds(this.Seconds);
                 secondsToShutdown = Convert.ToInt32((shutdown - DateTime.Now).TotalSeconds);
             }
-            else     // InAt = "At"
+            else     // Mode = "At"
             {
                 // TODO consider if the timer is the day after
                 secondsToShutdown = 36000;  // just so I dont shutdown this rig again by mistake
@@ -104,6 +109,11 @@ namespace Damn_Simple_Shutdown_Timer
             processInfo.CreateNoWindow = true;
             processInfo.UseShellExecute = false;
             Process.Start(processInfo);
+        }
+
+        private void ActionComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            this.Action = (Action)Enum.Parse(typeof(Action), ActionComboBox.SelectedValue.ToString());
         }
     }
 }
